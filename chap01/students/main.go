@@ -2,40 +2,52 @@ package main
 
 import "fmt"
 
+type Stringer = interface {
+	String() string
+}
+
+type Integer int
+
+func (i Integer) String() string {
+	return fmt.Sprintf("%d", i)
+}
+
+type String string
+
+func (s String) String() string {
+	return string(s)
+}
+
 type Student struct {
 	Name string
 	ID   int
-	age  float64
+	Age  float64
 }
 
-func addStudent(students []string, student string) []string {
-	return append(students, student)
+func (s Student) String() string {
+	return fmt.Sprintf("%s %d %0.2f", s.Name, s.ID, s.Age)
 }
 
-func addStudentID(students []int, student int) []int {
-	return append(students, student)
-}
-
-func addStudentStruct(students []Student, student Student) []Student {
+func addStudent[T Stringer](students []T, student T) []T {
 	return append(students, student)
 }
 
 func main() {
-	students := []string{}
-	result := addStudent(students, "Michael")
-	result = addStudent(result, "Jennifer")
+	students := []String{}
+	result := addStudent[String](students, "Michael")
+	result = addStudent[String](result, "Jennifer")
 	result = append(result, "Elaine")
 	fmt.Println(result)
 
-	students1 := []int{}
-	result1 := addStudentID(students1, 155)
-	result1 = addStudentID(result1, 112)
-	result1 = addStudentID(result1, 120)
+	students1 := []Integer{}
+	result1 := addStudent[Integer](students1, 155)
+	result1 = addStudent[Integer](result1, 112)
+	result1 = addStudent[Integer](result1, 120)
 	fmt.Println(result1)
 
 	student2 := []Student{}
-	result2 := addStudentStruct(student2, Student{"John", 213, 17.5})
-	result2 = addStudentStruct(student2, Student{"James", 111, 18.75})
-	result2 = addStudentStruct(student2, Student{"Marsha", 110, 16.25})
+	result2 := addStudent[Student](student2, Student{"John", 213, 17.5})
+	result2 = addStudent[Student](result2, Student{"James", 111, 18.75})
+	result2 = addStudent[Student](result2, Student{"Marsha", 110, 16.25})
 	fmt.Println(result2)
 }
