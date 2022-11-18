@@ -34,20 +34,20 @@ func addStudent[T Stringer](students []T, student T) []T {
 
 func main() {
 	students := []String{}
-	result := addStudent[String](students, "Michael")
-	result = addStudent[String](result, "Jennifer")
+	result := addStudent(students, "Michael")
+	result = addStudent(result, "Jennifer")
 	result = append(result, "Elaine")
 	fmt.Println(result)
 
 	students1 := []Integer{}
-	result1 := addStudent[Integer](students1, 155)
-	result1 = addStudent[Integer](result1, 112)
-	result1 = addStudent[Integer](result1, 120)
+	result1 := addStudent(students1, 155)
+	result1 = addStudent(result1, 112)
+	result1 = addStudent(result1, 120)
 	fmt.Println(result1)
 
 	student2 := []Student{}
-	result2 := addStudent[Student](student2, Student{"John", 213, 17.5})
-	result2 = addStudent[Student](result2, Student{"James", 111, 18.75})
-	result2 = addStudent[Student](result2, Student{"Marsha", 110, 16.25})
+	result2 := addStudent(student2, Student{"John", 213, 17.5})
+	result2 = addStudent(result2, Student{"James", 111, 18.75})
+	result2 = addStudent(result2, Student{"Marsha", 110, 16.25})
 	fmt.Println(result2)
 }
