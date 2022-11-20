@@ -68,4 +68,13 @@ func main() {
 	result1 = addStudent(result1, 45)
 	sort.Sort(OrderedSlice[int](result1))
 	fmt.Println(result1)
+
+	students2 := []Student{}
+	result2 := addStudent(students2, Student{"John", 213, 17.5})
+	result2 = addStudent(result2, Student{"James", 111, 18.75})
+	result2 = addStudent(result2, Student{"Marsha", 110, 16.25})
+	PerformSort(result2, func(s1, s2 Student) bool {
+		return s1.Age < s2.Age
+	})
+	fmt.Println(result2)
 }
