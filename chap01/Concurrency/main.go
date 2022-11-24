@@ -7,12 +7,12 @@ import (
 
 func regularFunction() {
 	fmt.Println("Just entered regularFunction()")
-	time.Sleep(5 * time.Second)
+	time.Sleep(10 * time.Second)
 }
 
 func gorotineFunction() {
 	fmt.Println("Just entered goroutineFunction()")
-	time.Sleep(10 * time.Second)
+	time.Sleep(5 * time.Second)
 	fmt.Println("goroutineFunction finished its work")
 }
 
