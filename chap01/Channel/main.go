@@ -16,14 +16,6 @@ func pingGenerator(c chan string) {
 	}
 }
 
-// func output(c chan string) {
-// 	defer wg.Done()
-// 	for {
-// 		value := <-c
-// 		fmt.Println(value)
-// 	}
-// }
-
 func output(c chan string) {
 	for {
 		select {
